@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1f67a2b7-b9a8-4328-b839-08b38c1f7296" name="Changes" comment="inittial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Address.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/School.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
