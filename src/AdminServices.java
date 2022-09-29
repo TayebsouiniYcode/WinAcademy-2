@@ -5,12 +5,13 @@ public class AdminServices {
     Application app = new Application();
 
     public void manageSchool() {
-        int choix = 0 ;
+        int choix = 0;
         do {
             System.out.println("1. Create school");
-            System.out.println("2. Show all school");
-            System.out.println("3. Shearch school");
-            System.out.println("4. Delete school");
+            System.out.println("2. Update school");
+            System.out.println("3. Show all school");
+            System.out.println("4. Shearch school");
+            System.out.println("5. Delete school");
             System.out.println("99. Cancel");
             System.out.print("Enter a number : ");
 
@@ -21,14 +22,18 @@ public class AdminServices {
                     addSchool();
                     break;
                 case 2:
-                    showAllSchool();
+                    updateSchool();
                     break;
                 case 3:
-                    getSchool();
+                    showAllSchool();
                     break;
                 case 4:
+                    getSchool();
+                    break;
+                case 5:
                     deleteSchool();
                     break;
+
                 default:
                     Application.show("");
             }
@@ -49,7 +54,19 @@ public class AdminServices {
         Application.show("Enter school site: ");
         String site = Application.scan();
 
-        app.addSchool(numero, name, site);
+        Application.show("Enter city: ");
+        String city = Application.scan();
+
+        Application.show("Enter country: ");
+        String country = Application.scan();
+
+        Application.show("Enter postal code: ");
+        String code_postal = Application.scan();
+
+        Application.show("Enter postal address: ");
+        String address = Application.scan();
+
+        app.addSchool(numero, name, site, city, country, code_postal, address);
     }
 
     public void deleteSchool()
@@ -60,10 +77,60 @@ public class AdminServices {
         app.deleteSchool(schoolNumber);
     }
 
+    public void updateSchool()
+    {
+        showAllSchool();
+        System.out.println("Enter school number: ");
+        int schoolNumber = Integer.parseInt(Application.scan());
+        System.out.println("1. Update school name");
+        System.out.println("2. Update school site");
+        System.out.println("3. Update school address");
+        System.out.println("Enter a number: ");
+        int choix = Integer.parseInt(Application.scan());
+
+        switch (choix){
+            case 1:
+                updateSchoolName(schoolNumber);
+                break;
+            case 2:
+                updateSchoolSite(schoolNumber);
+                break;
+            case 3:
+                System.out.println("This fonctionnality is not found");
+                //updateSchoolAddress(schoolNumber);
+                break;
+            default:
+                System.out.println("Enter a valide number :)");
+        }
+    }
+
+    public void updateSchoolName(int schoolNumber)
+    {
+        School school = Application.schools.get(schoolNumber);
+        System.out.println("Enter name: ");
+        String str = Application.scan();
+        school.setName(str);
+
+        Application.schools.put(school.getNumero(), school);
+        System.out.println("Success");
+    }
+    public void updateSchoolSite(int schoolNumber)
+    {
+        School school = Application.schools.get(schoolNumber);
+        System.out.println("Enter site: ");
+        String str = Application.scan();
+        school.setSite(str);
+
+        Application.schools.put(school.getNumero(), school);
+        System.out.println("Success");
+    }
+
     public void showAllSchool()
     {
         //Application.show(Application.schools.toString());
-        Application.schools.forEach((key, value) -> System.out.println("Number: " + key + " " + value));
+        Application.schools.forEach((key, value) -> System.out.println("Number: " + key +
+                " \t|\t name: " + value.getName() +
+                " \t|\t site: " + value.getSite()));
     }
 
     public void getSchool(){
