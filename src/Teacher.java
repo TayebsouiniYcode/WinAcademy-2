@@ -14,4 +14,18 @@ public class Teacher extends User{
     public void setDate_fonction(String date_fonction) {
         this.date_fonction = date_fonction;
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "date_fonction='" + date_fonction + '\'' +
+                ", id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

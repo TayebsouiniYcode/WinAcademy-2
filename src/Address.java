@@ -1,9 +1,9 @@
 public class Address {
-    int id;
-    String ville;
-    String pays;
-    String code_postal;
-    String address;
+    private static int id = 0;
+    private String ville;
+    private String pays;
+    private String code_postal;
+    private String address;
 
     public Address(){}
 
@@ -36,7 +36,7 @@ public class Address {
         this.address = address;
     }
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
