@@ -48,6 +48,7 @@ public class School {
 
     private HashMap<Integer, Departement> departements = new HashMap<Integer, Departement>();
 
+    public School() {};
     public School(int numero, String name, String site)
     {
         this.numero = numero;
@@ -55,13 +56,13 @@ public class School {
         this.site = site;
     }
 
-    public void addAddress(int id, String ville, String pays, String code_postal, String address){
+    public void addAddress(Address address){
         //this.address.setId(id);
         //this.address.setVille(ville);
         //this.address.setPays(pays);
         //this.address.setCode_postal(code_postal);
         //this.address.setAddress(address);
-        this.address = new Address(id, ville, pays, code_postal, address);
+        this.address = address;
     }
 
     public String addDepartement(int id, String name, String description)

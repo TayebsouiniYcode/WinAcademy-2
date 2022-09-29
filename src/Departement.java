@@ -23,9 +23,9 @@ public class Departement {
                 "} \n";
     }
 
-    public boolean addTeacher(int id_user, String firstname, String lastname, String email, String password, String phone, boolean status, String date_fonction)
+    public boolean addTeacher(Teacher teacher)
     {
-        Teacher teacher = new Teacher(date_fonction, id_user, firstname, lastname, email, password, phone, status);
+        //Teacher teacher = new Teacher(date_fonction, id_user, firstname, lastname, email, password, phone, status);
 
         teachers.put(teacher.getId(), teacher);
         return true;
