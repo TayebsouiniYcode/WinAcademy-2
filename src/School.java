@@ -5,26 +5,9 @@ public class School {
     private String name;
     private String site;
     private Address address;
+    private HashMap<Integer, Departement> departements = new HashMap<Integer, Departement>();
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public void setDepartements(HashMap<Integer, Departement> departements) {
-        this.departements = departements;
-    }
 
     public int getNumero() {
         return numero;
@@ -46,7 +29,15 @@ public class School {
         return departements;
     }
 
-    private HashMap<Integer, Departement> departements = new HashMap<Integer, Departement>();
+    public Departement getDepartement(int id)
+    {
+        return this.departements.get(id);
+    }
+
+    public void removeDepartement(int id)
+    {
+        this.departements.remove(id);
+    }
 
     public School() {};
     public School(int numero, String name, String site)
@@ -84,6 +75,10 @@ public class School {
         }
     }
 
+    public void addDepartement(Departement departement)
+    {
+
+    }
     @Override
     public String toString() {
         return "School{" +
@@ -93,5 +88,25 @@ public class School {
                 ", \n address=" + address +
                 ", \n departements" + departements +
                 '}';
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setDepartements(int id, Departement departement) {
+        this.departements.put(id, departement);
     }
 }

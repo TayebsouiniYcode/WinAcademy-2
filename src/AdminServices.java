@@ -159,9 +159,10 @@ public class AdminServices {
         int choix = 0 ;
         do {
             System.out.println("1. Create Departement");
-            System.out.println("2. Show all Departement");
+            System.out.println("2. Show Departements");
             System.out.println("3. Shearch school");
-            System.out.println("4. Delete school");
+            System.out.println("4. Update departement");
+            System.out.println("5. Delete departement");
             System.out.println("99. Cancel");
             System.out.print("Enter a number : ");
 
@@ -169,15 +170,107 @@ public class AdminServices {
 
             switch (choix) {
                 case 1:
-                    addSchool();
+                    addDepartement();
                     break;
                 case 2:
-                    showAllSchool();
+                    showDepartement();
                     break;
                 case 3:
-                    getSchool();
+                    System.out.println("Coming soon... !!!");
+                    break;
+                case 4:
+                    updateDepartement();
+                    break;
+                case 5:
+                    deleteDepartement();
                     break;
             }
         } while (choix != 99);
     }
+
+    public void addDepartement()
+    {
+        showAllSchool();
+        System.out.println("Enter school number");
+        int schoolNumber = Integer.parseInt(Application.scan());
+
+        System.out.println("Enter id departement: ");
+        int id = Integer.parseInt(Application.scan());
+
+        System.out.println("Enter departement name: ");
+        String name = Application.scan();
+
+        System.out.println("Enter departement description: ");
+        String description = Application.scan();
+
+        app.addDepartement(id, name, description, schoolNumber);
+    }
+
+    public int showDepartement()
+    {
+        showAllSchool();
+        Application.show("Enter school number : ");
+        int schoolNumber = Integer.parseInt(Application.scan());
+        System.out.println(Application.schools.get(schoolNumber).getDepartements());
+        return schoolNumber;
+    }
+    public void updateDepartement()
+    {
+        int schoolNumber = showDepartement();
+        System.out.println("Enter departement number: ");
+        int departementNumber = Integer.parseInt(Application.scan());
+
+        System.out.println("1. Update name: ");
+        System.out.println("2. Update description: ");
+        int choix = Integer.parseInt(Application.scan());
+
+        switch (choix){
+            case 1:
+                updateDepratementName(departementNumber, schoolNumber);
+                break;
+            case 2:
+                updateDepartementDescription(departementNumber, schoolNumber);
+                break;
+            default:
+                System.out.println("Number not valide !!");
+        }
+    }
+
+    public void deleteDepartement()
+    {
+        int schoolNumber = showDepartement();
+        System.out.println("Enter departement number: ");
+        int departementNumber = Integer.parseInt(Application.scan());
+
+        Application.schools.get(schoolNumber).removeDepartement(departementNumber);
+
+        System.out.println("Success");
+    }
+    public void updateDepratementName(int departementNumber, int schoolNumber)
+    {
+        System.out.println("Enter name: ");
+        String name = Application.scan();
+
+        Departement departement = Application.schools.get(schoolNumber).getDepartement(departementNumber);
+        departement.setName(name);
+
+        Application.schools.get(schoolNumber).setDepartements(departementNumber, departement);
+
+        System.out.println("Success");
+    }
+
+    public void updateDepartementDescription(int departementNumber, int schoolNumber)
+    {
+        System.out.println("Enter description: ");
+        String description = Application.scan();
+
+        Departement departement = Application.schools.get(schoolNumber).getDepartement(departementNumber);
+        departement.setDescription(description);
+
+        Application.schools.get(schoolNumber).setDepartements(departementNumber, departement);
+
+        System.out.println("Success");
+    }
+
+
 }

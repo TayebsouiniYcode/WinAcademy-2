@@ -2,14 +2,11 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Application {
-
     static HashMap<Integer, School> schools = new HashMap<Integer, School>();
-
     public static void show(String str)
     {
         System.out.println(str);
     }
-
     public static String scan()
     {
         Scanner sc = new Scanner(System.in);
@@ -22,7 +19,6 @@ public class Application {
         this.schools.put(numero, school);
         show("Success");
     }
-
     public void addSchool(int numero, String name, String site, String city, String country, String postal_code, String address)
     {
         Address address1 = new Address(city, country, postal_code, address);
@@ -30,11 +26,18 @@ public class Application {
         Application.schools.put(school.getNumero(), school);
         System.out.println("Success");
     }
-
     public void deleteSchool(int number)
     {
         this.schools.remove(number);
         Application.show("Success");
     }
+
+    public void addDepartement(int id, String name, String description, int schoolNumber)
+    {
+        Departement departement = new Departement(id, name, description);
+        Application.schools.get(schoolNumber).setDepartements(id, departement);
+        System.out.println("Success");
+    }
+
 
 }
