@@ -15,6 +15,15 @@ public class Address {
         this.code_postal = code_postal;
         this.address = address;
     }
+    public Address(String ville, String pays, String code_postal, String address)
+    {
+        System.out.println(address);
+        this.id = Address.id++;
+        this.ville = ville;
+        this.pays = pays;
+        this.code_postal = code_postal;
+        this.address = address;
+    }
 
     public void setId(int id) {
         this.id = id;

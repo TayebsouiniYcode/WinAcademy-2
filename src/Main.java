@@ -5,8 +5,15 @@ import java.util.Scanner;
 public class Main {
     
     public static void main(String[] args) {
+        //fake data
+        Application.schools.put(1, new School(1, "Youcode Youssoufia", "youcode.ma"));
+        Application.schools.put(2, new School(2, "Youcode Safi", "youcode.ma"));
+        Application.schools.put(3, new School(3, "Youcode Marrakech", "youcode.ma"));
+        Application.schools.put(4, new School(4, "Youcode Meknes", "youcode.ma"));
+
         AdminServices adminServices = new AdminServices();
         int choix = 0;
+
         do {
             Application.show("\t\t\tWelcome");
             Application.show("\t\t1. Manage school");
@@ -27,6 +34,7 @@ public class Main {
 
             }
         } while (choix != 00);
+
         Application.show("Good luck!!");
         System.exit(0);
         //School school1 = new School(1, "Moussa ibno noussair", "moussa.ma");

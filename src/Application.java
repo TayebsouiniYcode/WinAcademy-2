@@ -13,7 +13,7 @@ public class Application {
     public static String scan()
     {
         Scanner sc = new Scanner(System.in);
-        return sc.next();
+        return sc.nextLine();
     }
 
     public void addSchool(int numero, String name, String site)
@@ -23,9 +23,18 @@ public class Application {
         show("Success");
     }
 
+    public void addSchool(int numero, String name, String site, String city, String country, String postal_code, String address)
+    {
+        Address address1 = new Address(city, country, postal_code, address);
+        School school = new School(numero, name, site, address1);
+        Application.schools.put(school.getNumero(), school);
+        System.out.println("Success");
+    }
+
     public void deleteSchool(int number)
     {
         this.schools.remove(number);
         Application.show("Success");
     }
+
 }

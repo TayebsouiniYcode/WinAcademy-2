@@ -56,6 +56,14 @@ public class School {
         this.site = site;
     }
 
+    public School(int numero, String name, String site, Address address)
+    {
+        this.numero = numero;
+        this.name = name;
+        this.site = site;
+        this.address = address;
+    }
+
     public void addAddress(Address address){
         //this.address.setId(id);
         //this.address.setVille(ville);
