@@ -7,6 +7,8 @@ public class User {
     protected String phone;
     protected Boolean status;
 
+    public User(){}
+
     public  User(int id, String firstname, String lastname, String email, String password, String phone, Boolean status)
     {
         this.id = id;
