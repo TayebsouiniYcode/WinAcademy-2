@@ -5,38 +5,37 @@ import java.util.Scanner;
 public class Main {
     
     public static void main(String[] args) {
-        //fake data
-        Application.schools.put(1, new School(1, "Youcode Youssoufia", "youcode.ma"));
-        Application.schools.put(2, new School(2, "Youcode Safi", "youcode.ma"));
-        Application.schools.put(3, new School(3, "Youcode Marrakech", "youcode.ma"));
-        Application.schools.put(4, new School(4, "Youcode Meknes", "youcode.ma"));
+        Application.fakeData();
+        Authentication.login();
 
-        AdminServices adminServices = new AdminServices();
-        int choix = 0;
+        if (Application.getUser ().getStatus ()){
+            AdminServices adminServices = new AdminServices();
+            int choix = 0;
 
-        do {
-            Application.show("\t\t\tWelcome");
-            Application.show("\t\t1. Manage school");
-            Application.show("\t\t2. Manage departement");
-            Application.show("\t\t3. Manage teacher");
+            do {
+                Application.show("\t\t\tWelcome");
+                Application.show("\t\t1. Manage school");
+                Application.show("\t\t2. Manage departement");
+                Application.show("\t\t3. Manage teacher");
 
-            System.out.println("Enter a number : ");
-            Scanner sc = new Scanner(System.in);
-            choix = sc.nextInt();
+                System.out.println("Enter a number : ");
+                Scanner sc = new Scanner(System.in);
+                choix = sc.nextInt();
 
-            switch (choix) {
-                case 1 :
-                    adminServices.manageSchool();
-                    break;
-                case 2:
-                    adminServices.manageDepartement();
-                    break;
+                switch (choix) {
+                    case 1 :
+                        adminServices.manageSchool();
+                        break;
+                    case 2:
+                        adminServices.manageDepartement();
+                        break;
 
-            }
-        } while (choix != 00);
+                }
+            } while (choix != 00);
 
-        Application.show("Good luck!!");
-        System.exit(0);
+            Application.show("Good luck!!");
+            System.exit(0);
+        }
         //School school1 = new School(1, "Moussa ibno noussair", "moussa.ma");
         //school1.addAddress(1, "Youssoufia", "Maroc", "46300", "numero 1 rue sebtah Qu El mohammadi");
 

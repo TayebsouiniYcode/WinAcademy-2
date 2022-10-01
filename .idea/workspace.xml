@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f67a2b7-b9a8-4328-b839-08b38c1f7296" name="Changes" comment="inittial commit">
+      <change afterPath="$PROJECT_DIR$/src/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/class diagram.mdj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +40,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Youcode/Downloads/monokai-pro-jetbrains.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Youcode/Documents/Poudlard/WinAcademy-2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
@@ -70,6 +74,9 @@
       <workItem from="1664361456749" duration="7195000" />
       <workItem from="1664376728817" duration="4209000" />
       <workItem from="1664392045561" duration="21298000" />
+      <workItem from="1664528577322" duration="709000" />
+      <workItem from="1664557489879" duration="58000" />
+      <workItem from="1664616383575" duration="5529000" />
     </task>
     <task id="LOCAL-00001" summary="inittial commit">
       <created>1664361474885</created>

@@ -2876,7 +2876,7 @@
 											"top": 390,
 											"width": 136.6650390625,
 											"height": 13,
-											"text": "-id: Int",
+											"text": "#id: Int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2927,7 +2927,7 @@
 											"top": 435,
 											"width": 136.6650390625,
 											"height": 13,
-											"text": "+email: VARCHAR",
+											"text": "#email: VARCHAR",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6333,7 +6333,7 @@
 								"$ref": "AAAAAAGDW2yiRUwkbFU="
 							},
 							"name": "id",
-							"visibility": "private",
+							"visibility": "protected",
 							"type": "Int"
 						},
 						{
@@ -6361,6 +6361,7 @@
 								"$ref": "AAAAAAGDW2yiRUwkbFU="
 							},
 							"name": "email",
+							"visibility": "protected",
 							"type": "VARCHAR"
 						},
 						{
