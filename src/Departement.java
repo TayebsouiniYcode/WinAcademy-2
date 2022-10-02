@@ -4,13 +4,50 @@ public class Departement {
     private int id;
     private String name;
     private String description;
+    private Teacher responsable = new Teacher (  );
     private HashMap<Integer, Teacher> teachers = new HashMap<Integer, Teacher>();
 
+
+    // constructor ---------------------------------------------------------------------------
     public Departement(int id, String name, String description)
     {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    // Getters and setters ---------------------------------------------------------------
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public Teacher getResponsable ( ) {
+        return responsable;
+    }
+    public void setResponsable ( Teacher responsable ) {
+        this.responsable = responsable;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teachers.put ( teacher.getId (), teacher );
+    }
+
+    public HashMap<Integer, Teacher> getTeachers(){
+        return teachers;
     }
 
     @Override
@@ -23,45 +60,22 @@ public class Departement {
                 "} \n";
     }
 
-    public boolean addTeacher(Teacher teacher)
+
+    // to refactoring ******************************************************************
+    public void addTeacher(Teacher teacher)
     {
-        //Teacher teacher = new Teacher(date_fonction, id_user, firstname, lastname, email, password, phone, status);
-
         teachers.put(teacher.getId(), teacher);
-        return true;
     }
+    // **********************************************************************************
 
-    // Getters and Setters
-    public void setTeachers(HashMap<Integer, Teacher> teachers) {
-        this.teachers = teachers;
-    }
 
-    public HashMap<Integer, Teacher> getTeachers() {
-        return teachers;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
-    public int getId() {
-        return id;
-    }
 
-    public String getName() {
-        return name;
-    }
 
-    public String getDescription() {
-        return description;
-    }
+
+
 
 }

@@ -1,6 +1,3 @@
-import java.rmi.server.ExportException;
-import java.util.Scanner;
-
 public class AdminServices {
     Application app = new Application();
 
@@ -10,7 +7,7 @@ public class AdminServices {
             System.out.println("1. Create school");
             System.out.println("2. Update school");
             System.out.println("3. Show all school");
-            System.out.println("4. Shearch school");
+            System.out.println("4. Search school");
             System.out.println("5. Delete school");
             System.out.println("99. Cancel");
             System.out.print("Enter a number : ");
@@ -63,7 +60,7 @@ public class AdminServices {
         Application.show("Enter postal code: ");
         String code_postal = Application.scan();
 
-        Application.show("Enter postal address: ");
+        Application.show("Enter address: ");
         String address = Application.scan();
 
         app.addSchool(numero, name, site, city, country, code_postal, address);
@@ -160,9 +157,11 @@ public class AdminServices {
         do {
             System.out.println("1. Create Departement");
             System.out.println("2. Show Departements");
-            System.out.println("3. Shearch school");
+            System.out.println("3. Search Departement");
             System.out.println("4. Update departement");
             System.out.println("5. Delete departement");
+            System.out.println ("6. Add Teacher to departement" );
+            System.out.println ("7. Add responsable" );
             System.out.println("99. Cancel");
             System.out.print("Enter a number : ");
 
@@ -183,6 +182,12 @@ public class AdminServices {
                     break;
                 case 5:
                     deleteDepartement();
+                    break;
+                case 6:
+                    //addTeacher();
+                    break;
+                case 7:
+                    addResponsable();
                     break;
             }
         } while (choix != 99);
@@ -254,7 +259,7 @@ public class AdminServices {
         Departement departement = Application.schools.get(schoolNumber).getDepartement(departementNumber);
         departement.setName(name);
 
-        Application.schools.get(schoolNumber).setDepartements(departementNumber, departement);
+        Application.schools.get(schoolNumber).setDepartement (departementNumber, departement);
 
         System.out.println("Success");
     }
@@ -267,8 +272,78 @@ public class AdminServices {
         Departement departement = Application.schools.get(schoolNumber).getDepartement(departementNumber);
         departement.setDescription(description);
 
-        Application.schools.get(schoolNumber).setDepartements(departementNumber, departement);
+        Application.schools.get(schoolNumber).setDepartement (departementNumber, departement);
 
         System.out.println("Success");
+    }
+
+    public void addResponsable(){
+        System.out.println (Application.schools.toString ());
+        System.out.println ( "Enter school number: ");
+        int schoolNumber = Integer.parseInt (Application.scan ());
+        System.out.println ( Application.schools.get ( schoolNumber ).getDepartements ().toString ());
+        System.out.println ("Enter departement number: " );
+        int departementNumber = Integer.parseInt (Application.scan ());
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).getTeachers ().toString ());
+
+        System.out.println ("Select teacher: " );
+        int teacherNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println ("school: " + schoolNumber + " departement: " + departementNumber + " teacher: " + teacherNumber);
+
+    }
+
+
+    public void createTeacher()
+    {
+        System.out.println (Application.schools.toString());
+        System.out.println ("Enter school number: " );
+        int schoolNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartements ().toString () );
+        System.out.println ("Enter departement number: " );
+        int departementNumber = Integer.parseInt ( Application.scan () );
+
+
+        Teacher teacher = new Teacher (  );
+
+        System.out.println ("Enter Firstname: " );
+        teacher.setFirstname ( Application.scan () );
+
+        System.out.println ("Enter lastname: " );
+        teacher.setLastname ( Application.scan () );
+
+        System.out.println ("Enter email: " );
+        teacher.setEmail ( Application.scan () );
+
+        System.out.println ("Enter password: " );
+        teacher.setPassword ( Application.scan () );
+
+        System.out.println ("Enter number phone: " );
+        teacher.setPhone ( Application.scan () );
+
+        System.out.println ("Enter user id: " );
+        teacher.setId ( Integer.parseInt (  Application.scan ()) );
+
+        System.out.println ("Enter status: " );
+        teacher.setStatus ( Boolean.parseBoolean ( Application.scan ()) );
+
+        System.out.println ("Enter date : JJ/MM/AAAA: " );
+        teacher.setDate_fonction ( Application.scan () );
+
+        teacher.addUserToApplication();
+        Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).setTeacher ( teacher );
+    }
+
+    public void manageTeacher(){
+        Menu.teacher();
+    }
+
+    // Account methos
+    public void showAccount(){
+        Application.getUsers ().forEach ( (key, value) ->{
+            System.out.println (value.getEmail () );
+        } );
     }
 }

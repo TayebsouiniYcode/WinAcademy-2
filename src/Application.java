@@ -41,7 +41,7 @@ public class Application {
     }
 
     public void addSchool ( int numero , String name , String site , String city , String country , String postal_code , String address ) {
-        Address address1 = new Address ( city , country , postal_code , address );
+        Address address1 = new Address (numero, city , country , postal_code , address );
         School school = new School ( numero , name , site , address1 );
         Application.schools.put ( school.getNumero ( ) , school );
         System.out.println ( "Success" );
@@ -54,7 +54,7 @@ public class Application {
 
     public void addDepartement ( int id , String name , String description , int schoolNumber ) {
         Departement departement = new Departement ( id , name , description );
-        Application.schools.get ( schoolNumber ).setDepartements ( id , departement );
+        Application.schools.get ( schoolNumber ).setDepartement ( id , departement );
         System.out.println ( "Success" );
     }
 
@@ -66,9 +66,30 @@ public class Application {
         Application.schools.put(3, new School(3, "Youcode Marrakech", "youcode.ma"));
         Application.schools.put(4, new School(4, "Youcode Meknes", "youcode.ma"));
 
+        // departement
+        Application.schools.get ( 1 ).setDepartement ( 1, new Departement ( 1, "Informatique", "Departement d'informatique" ) );
+        Application.schools.get ( 1 ).setDepartement ( 2, new Departement ( 2, "Math", "Departement de math" ) );
+        Application.schools.get ( 1 ).setDepartement ( 3, new Departement ( 3, "Arabe", "Departement d'arabe" ) );
+        Application.schools.get ( 2 ).setDepartement ( 1, new Departement ( 4, "Informatique", "Departement d'informatique" ) );
+        Application.schools.get ( 2 ).setDepartement ( 2, new Departement ( 5, "Math", "Departement Math" ) );
+
+        // teacher
+        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "22/12/2020", 1,  "Tayeb", "SOUINI", "tayeb@gmail.com", "123", "0607189671", true) );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "22/12/2020", 2,  "Mourad", "esserakh", "mourad@gmail.com", "123", "0607189671", true) );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "22/12/2022", 3,  "Fouad", "Rawan", "fouad@gmail.com", "123", "0607189671", true) );
+        Application.schools.get ( 1 ).getDepartement ( 2 ).setTeacher ( new Teacher ( "22/12/2023", 4,  "Ahmed", "Edir", "Ahmed@gmail.com", "123", "0607189671", true) );
+
+        /*
         Application.users.put ( 1, new User ( 1, "Tayeb",
                 "Souini", "tayeb@gmail.com",
                 "123", "0607189671", true ) );
-    }
+        Application.users.put ( 2, new User ( 1, "mourad",
+                "esserakh", "mourad@gmail.com",
+                "123", "0607189671", true ) );
+        Application.users.put ( 3, new User ( 1, "fouad",
+                "raouan", "fouad@gmail.com",
+                "123", "0607189671", true ) );
 
+         */
+    }
 }

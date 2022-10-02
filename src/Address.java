@@ -1,76 +1,67 @@
 public class Address {
-    private static int id = 0;
-    private String ville;
-    private String pays;
+    private int id;
+    private String city;
+    private String country;
     private String code_postal;
     private String address;
 
     public Address(){}
-
     public Address (int id, String ville, String pays, String code_postal, String address)
     {
         this.id = id;
-        this.ville = ville;
-        this.pays = pays;
-        this.code_postal = code_postal;
-        this.address = address;
-    }
-    public Address(String ville, String pays, String code_postal, String address)
-    {
-        System.out.println(address);
-        this.id = Address.id++;
-        this.ville = ville;
-        this.pays = pays;
+        this.city = ville;
+        this.country = pays;
         this.code_postal = code_postal;
         this.address = address;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public void setPays(String pays) {
-        this.pays = pays;
-    }
-
-    public void setCode_postal(String code_postal) {
-        this.code_postal = code_postal;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public static int getId() {
+    public int getId ( ) {
         return id;
     }
 
-    public String getVille() {
-        return ville;
+    public String getCity ( ) {
+        return city;
     }
 
-    public String getPays() {
-        return pays;
+    public String getCountry ( ) {
+        return country;
     }
 
-    public String getCode_postal() {
+    public String getCode_postal ( ) {
         return code_postal;
     }
 
-    public String getAddress() {
+    public String getAddress ( ) {
         return address;
+    }
+
+    public void setId ( int id ) {
+        this.id = id;
+    }
+
+    public void setCity ( String city ) {
+        this.city = city;
+    }
+
+    public void setCountry ( String country ) {
+        this.country = country;
+    }
+
+    public void setCode_postal ( String code_postal ) {
+        this.code_postal = code_postal;
+    }
+
+    public void setAddress ( String address ) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
         return "Address{" +
                 "id=" + id +
-                ", ville='" + ville + '\'' +
-                ", pays='" + pays + '\'' +
+                ", ville='" + city + '\'' +
+                ", pays='" + country + '\'' +
                 ", code_postal='" + code_postal + '\'' +
                 ", address='" + address + '\'' +
                 '}';
