@@ -2,6 +2,20 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Application {
+    private static HashMap<Integer, Matiere> matieres = new HashMap <> (  );
+
+    public static void setMatiere(Matiere matiere){
+        Application.matieres.put ( matiere.getId(), matiere );
+    }
+
+    public static Matiere getMatiere(int id){
+        return Application.matieres.get ( id );
+    }
+
+    public static HashMap<Integer, Matiere> getMatieres(){
+        return Application.matieres;
+    }
+
 
     public static User getUser ( ) {
         Application app = new Application ();
@@ -15,6 +29,9 @@ public class Application {
     private static User user = new User (  );
 
     static HashMap < Integer, School > schools = new HashMap < Integer, School > ( );
+    public static HashMap<Integer, School> getSchools(){
+        return Application.schools;
+    }
 
     private static HashMap<Integer, User> users = new HashMap <> (  );
     public static HashMap < Integer, User > getUsers ( ) {
@@ -34,23 +51,9 @@ public class Application {
         return sc.nextLine ( );
     }
 
-    public void addSchool ( int numero , String name , String site ) {
-        School school = new School ( numero , name , site );
-        this.schools.put ( numero , school );
-        show ( "Success" );
-    }
 
-    public void addSchool ( int numero , String name , String site , String city , String country , String postal_code , String address ) {
-        Address address1 = new Address (numero, city , country , postal_code , address );
-        School school = new School ( numero , name , site , address1 );
-        Application.schools.put ( school.getNumero ( ) , school );
-        System.out.println ( "Success" );
-    }
 
-    public void deleteSchool ( int number ) {
-        this.schools.remove ( number );
-        Application.show ( "Success" );
-    }
+
 
     public void addDepartement ( int id , String name , String description , int schoolNumber ) {
         Departement departement = new Departement ( id , name , description );
@@ -92,4 +95,18 @@ public class Application {
 
          */
     }
+
+    // School Methods -------------------------------------------------------------------------------------
+    public void addSchool ( int numero , String name , String site , String city , String country , String postal_code , String address ) {
+        Address address1 = new Address (numero, city , country , postal_code , address );
+        School school = new School ( numero , name , site , address1 );
+        Application.schools.put ( school.getNumero ( ) , school );
+        System.out.println ( "Success" );
+    }
+
+    public void deleteSchool ( int number ) {
+        this.schools.remove ( number );
+        Application.show ( "Success" );
+    }
+    // ----------------------------------------------------------------------------------------------------
 }

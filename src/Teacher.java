@@ -1,6 +1,15 @@
 public class Teacher extends User{
     private String date_fonction;
 
+    public int getId_matiere ( ) {
+        return id_matiere;
+    }
+
+    public void setId_matiere ( int id_matiere ) {
+        this.id_matiere = id_matiere;
+    }
+
+    private int id_matiere;
 
     public Teacher(){}
     public Teacher(String date_fonction, int id_user, String firstname, String lastname, String email, String password, String phone, Boolean status)

@@ -4,17 +4,9 @@ public class Departement {
     private int id;
     private String name;
     private String description;
+    // to refact
     private Teacher responsable = new Teacher (  );
     private HashMap<Integer, Teacher> teachers = new HashMap<Integer, Teacher>();
-
-
-    // constructor ---------------------------------------------------------------------------
-    public Departement(int id, String name, String description)
-    {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
 
     // Getters and setters ---------------------------------------------------------------
     public int getId() {
@@ -45,9 +37,18 @@ public class Departement {
     public void setTeacher(Teacher teacher) {
         this.teachers.put ( teacher.getId (), teacher );
     }
+    public Teacher getTecher(int id) { return this.teachers.get ( id );}
 
     public HashMap<Integer, Teacher> getTeachers(){
         return teachers;
+    }
+
+    // constructor ---------------------------------------------------------------------------
+    public Departement(int id, String name, String description)
+    {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
     @Override
@@ -57,25 +58,7 @@ public class Departement {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", teachers=" + teachers + '\'' +
+                ", responsable " + responsable + '\'' +
                 "} \n";
     }
-
-
-    // to refactoring ******************************************************************
-    public void addTeacher(Teacher teacher)
-    {
-        teachers.put(teacher.getId(), teacher);
-    }
-    // **********************************************************************************
-
-
-
-
-
-
-
-
-
-
-
 }
