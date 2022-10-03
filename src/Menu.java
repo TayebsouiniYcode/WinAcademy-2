@@ -13,11 +13,12 @@ public class Menu {
             Application.show("\t\t3. Manage teacher");
             Application.show ( "\t\t4. Manage Student" );
             System.out.println ("\t\t5. Manage Matieres" );
-            System.out.println ("\t\t5. Manage note" );
+            System.out.println ("\t\t6. Manage Evaluation" );
             System.out.println ("\t\t5. Account" );
             System.out.println ("98. Deconnecter" );
 
             System.out.println("Enter a number : ");
+
             Scanner sc = new Scanner(System.in);
             choix = sc.nextInt();
 
@@ -36,7 +37,11 @@ public class Menu {
                     break;
                 case 5:
                     menu.subMenuManageMatieres();
+                    break;
                 case 6:
+                    menu.subMenuMaganeEvaluation();
+                    break;
+                case 7:
                     adminServices.showAccount();
                     break;
                 case 98:
@@ -44,7 +49,7 @@ public class Menu {
                     break;
 
             }
-        } while (choix != 00);
+        } while (choix != 99);
 
         Application.show("Good luck!!");
         System.exit(0);
@@ -72,7 +77,7 @@ public class Menu {
                     adminServices.createTeacher (  );
                     break;
                 case 2:
-                    //adminServices.showAllTeachers();
+                    adminServices.showAllTeachers();
                     break;
                 case 3:
                     //menu.subMenuSearchTeacher();
@@ -87,19 +92,34 @@ public class Menu {
     public static void subMenuManageStudent()
     {
         AdminServices adminServices = new AdminServices ();
-        int choix = 0;
+        int choix;
 
         do {
             System.out.println ("1. Create Student" );
             System.out.println ("2. Update Student" );
             System.out.println ("3. Delete Student" );
-            System.out.println ("4. Show Student" );
+            System.out.println ("4. Show Students" );
+            System.out.println ("5. Show All Evaluations" );
             System.out.println ("99. Cancel" );
-
+            choix = Integer.parseInt ( Application.scan () );
             switch (choix){
                 case 1:
                     adminServices.createStudent();
-
+                    break;
+                case 2:
+                    adminServices.updateStudent();
+                    break;
+                case 3:
+                    adminServices.deleteStudent();
+                    break;
+                case 4:
+                    adminServices.getAllStudent();
+                    break;
+                case 5:
+                    adminServices.getAllEvaluation();
+                    break;
+                default:
+                    System.out.println ("Enter a valide number !!" );
             }
         } while (choix != 99);
     }
@@ -156,7 +176,23 @@ public class Menu {
                     System.out.println ("Enter a valide number: " );
             }
         } while (choix != 99);
+    }
 
+    public static void subMenuMaganeEvaluation(){
+        AdminServices adminServices = new AdminServices ();
+        int choix;
 
+        do {
+            System.out.println ("1. add Evaluation" );
+            System.out.println ("99. Cancel" );
+            choix = Integer.parseInt ( Application.scan () );
+
+            switch (choix){
+                case 1:
+                    adminServices.addEvaluation();
+                    break;
+            }
+
+        }while (choix != 99);
     }
 }
