@@ -145,7 +145,6 @@ public class AdminServices {
             } catch (Exception ex) {
                 Application.show("Error: " + ex.toString());
             }
-
         }
     }
 
@@ -157,7 +156,6 @@ public class AdminServices {
         do {
             System.out.println("1. Create Departement");
             System.out.println("2. Show Departements");
-            System.out.println("3. Search Departement");
             System.out.println("4. Update departement");
             System.out.println("5. Delete departement");
             System.out.println ("6. Add Teacher to departement" );
@@ -184,11 +182,13 @@ public class AdminServices {
                     deleteDepartement();
                     break;
                 case 6:
-                    //addTeacher();
+                    addTeacherToDepartement();
                     break;
                 case 7:
                     addResponsable();
                     break;
+                default:
+                    System.out.println ("enter valide number !!" );
             }
         } while (choix != 99);
     }
@@ -290,10 +290,50 @@ public class AdminServices {
         System.out.println ("Select teacher: " );
         int teacherNumber = Integer.parseInt ( Application.scan () );
 
-        System.out.println ("school: " + schoolNumber + " departement: " + departementNumber + " teacher: " + teacherNumber);
+        if (Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).getTeachers ().containsKey ( teacherNumber )) {
+            System.out.println ("school: " + schoolNumber + " departement: " + departementNumber + " teacher: " + teacherNumber);
+        }
 
     }
 
+    public void addTeacherToDepartement() {
+        System.out.println (Application.schools.toString () );
+        System.out.println ("Enter School number: " );
+        int schoolNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartements ().toString () );
+        System.out.println ("Enter departement number: " );
+        int departementNumber = Integer.parseInt ( Application.scan () );
+
+        Teacher teacher = new Teacher (  );
+        System.out.println ("Enter Teacher (id): " );
+        teacher.setId ( Integer.parseInt ( Application.scan () ) );
+
+        System.out.println ("Enter Teacher Firstname: " );
+        teacher.setFirstname ( Application.scan () );
+
+        System.out.println ("Enter Teacher lastname: " );
+        teacher.setLastname ( Application.scan () );
+
+        System.out.println ("Enter Teacher email: " );
+        teacher.setEmail ( Application.scan () );
+
+        System.out.println ("Enter Teacher password: " );
+        teacher.setPassword ( Application.scan () );
+
+        System.out.println ("Enter Teacher phone number: " );
+        teacher.setPhone ( Application.scan () );
+
+        System.out.println ("Enter Teacher date fonction: JJ/MM/AAAA" );
+        teacher.setDate_fonction ( Application.scan () );
+
+        System.out.println ("Teacher account Avtice (ture) Or Not (false)," );
+        teacher.setStatus ( Boolean.parseBoolean ( Application.scan () ) );
+
+        Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).setTeacher ( teacher );
+        System.out.println ("Success !! " );
+
+    }
 
     public void createTeacher()
     {
@@ -339,11 +379,103 @@ public class AdminServices {
     public void manageTeacher(){
         Menu.teacher();
     }
-
     // Account methos
     public void showAccount(){
         Application.getUsers ().forEach ( (key, value) ->{
             System.out.println (value.getEmail () );
         } );
     }
+
+    // Student methods ----------------------------------------------------
+    public static void createStudent(){
+
+    }
+
+    // Teacher Methods ----------------------------------------------------------------------
+    public void assigneMatiereToTeacher(int teacherNumber, int matiereNumber){
+        Application.schools.forEach ( (key, value) -> {
+            value.getDepartements ().forEach ( (departementKey, departement) ->{
+                if (departement.getTeachers ( ).containsKey ( teacherNumber ) ) {
+                    departement.getTecher ( teacherNumber ).setId_matiere ( matiereNumber );
+                } else {
+                    System.out.println ("Teacher not exist !!" );
+                }
+            } );
+        } );
+    }
+
+    // Matiere Methods ---------------------------------------------------------------------------
+    public void createMatiere(){
+        Matiere matiere = new Matiere (  );
+        System.out.println ("Enter Id Matiere: " );
+        matiere.setId ( Integer.parseInt ( Application.scan () ));
+
+        System.out.println ("Enter Matier name: " );
+        matiere.setName ( Application.scan () );
+
+        System.out.println ("Enter Matiere description: " );
+        matiere.setDescription ( Application.scan () );
+
+        Application.setMatiere ( matiere );
+    }
+    public void updateMatiere(){
+        System.out.println (Application.getMatieres ().toString () );
+        System.out.println ("Enter Matiere number: " );
+        int matiereNumber = Integer.parseInt ( Application.scan () );
+
+        int choix = 0;
+        do {
+            System.out.println ("1. Update name: " );
+            System.out.println ("2. Update Description: " );
+            choix = Integer.parseInt ( Application.scan () );
+            System.out.println ("99. Cancel" );
+
+            switch (choix){
+                case 1:
+                    updateMatiereName(matiereNumber);
+                    break;
+                case 2:
+                    updateMatiereDescription(matiereNumber);
+                    break;
+                default:
+                    System.out.println ("Enter a valide number !!" );
+            }
+        } while (choix != 99 );
+
+    }
+
+    public void updateMatiereName(int matierNumber){
+        System.out.println ("Enter Matiere name: " );
+        Application.getMatiere ( matierNumber ).setName ( Application.scan () );
+        System.out.println ("Success" );
+    }
+
+    public void updateMatiereDescription(int matierNumber){
+        System.out.println ("Enter Description: " );
+        Application.getMatiere ( matierNumber ).setDescription ( Application.scan () );
+        System.out.println ("Success" );
+    }
+
+    public void getAllMatiere(){
+        System.out.println (Application.getMatieres ().toString () );
+    }
+
+    public void deleteMatiere(){
+        System.out.println (Application.getMatieres ().toString () );
+        System.out.println ("Select Matiere number: " );
+        int matiereNumber = Integer.parseInt ( Application.scan () );
+
+        Application.schools.forEach ( (schoolNumber, school) -> {
+            school.getDepartements ().forEach ( (departementKey, departement) -> {
+                departement.getTeachers ().forEach ( (teacherKey, teacher) -> {
+                    if (teacher.getId_matiere () == matiereNumber){
+                        teacher.setId_matiere ( 0 );
+                    }
+                } );
+            } );
+        } );
+
+        Application.getMatieres ().remove ( matiereNumber );
+    }
+
 }
