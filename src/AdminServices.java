@@ -388,8 +388,102 @@ public class AdminServices {
 
     // Student methods ----------------------------------------------------
     public static void createStudent(){
+        Student student = new Student (  );
 
+        System.out.println ("Enter Student Id: " );
+        student.setId ( Integer.parseInt ( Application.scan () ) );
+
+        System.out.println ("Enter Student firstname: " );
+        student.setFirstname ( Application.scan () );
+
+        System.out.println ("Enter Student lastname: " );
+        student.setLastname ( Application.scan () );
+
+        System.out.println ("Enter Student email: example@example.com " );
+        student.setEmail ( Application.scan () );
+
+        System.out.println ("Enter Student Password: " );
+        student.setPassword ( Application.scan () );
+
+        System.out.println ("Enter Student phone number: " );
+        student.setPhone ( Application.scan () );
+
+        System.out.println ("Enter Account status Active (true) or Not (false)" );
+        student.setStatus ( Boolean.parseBoolean ( Application.scan () ) );
+
+        System.out.println ("Enter Date d'entree: JJ/MM/AAAA" );
+        student.setDate_entree ( Application.scan () );
+
+        Application.setStudent ( student );
     }
+
+    public void getAllStudent(){
+        System.out.println (Application.getStudents() );
+    }
+
+    public void updateStudent(){
+        getAllStudent ();
+        System.out.println ("Enter Student number: " );
+        int studentNumber = Integer.parseInt ( Application.scan () );
+        int choix;
+        do {
+            System.out.println ("1. Update firstname: " );
+            System.out.println ("2. Update lastname: " );
+            System.out.println ("3. Update email: " );
+            System.out.println ("4. Update phone number: " );
+            System.out.println ("5. Update password: " );
+            System.out.println ("6. Update status: " );
+            System.out.println ("7. Update Date d'entree: " );
+            System.out.println ("99. Cancel" );
+            choix = Integer.parseInt ( Application.scan () );
+
+            System.out.println ("Enter value: " );
+            String value = Application.scan ();
+            switch (choix){
+                case 1:
+                    //updateStudentFirstname(studentNumber, "setFirstname");
+                    Application.getStudent ( studentNumber ).setFirstname ( value );
+                    break;
+                case 2:
+                    //updateStudentLastname(studentNumber);
+                    Application.getStudent ( studentNumber ).setLastname ( value );
+                    break;
+                case 3:
+                    //updateStudetnEmail(studentNumber);
+                    Application.getStudent ( studentNumber ).setEmail ( value );
+                    break;
+                case 4:
+                    //updateStudentPhoneNumber(studentNumber);
+                    Application.getStudent ( studentNumber ).setPhone ( value );
+                    break;
+                case 5:
+                    //updateStudentPassword(studentNumber);
+                    Application.getStudent ( studentNumber ).setPassword ( value );
+                    break;
+                case 6:
+                    //updateStudentStatus(studentNumber);
+                    Application.getStudent ( studentNumber ).setStatus ( Boolean.parseBoolean (  value ) );
+                    break;
+                case 7:
+                    //updateStudentDateDEntree(studentNumber);
+                    Application.getStudent ( studentNumber ).setDate_entree ( value );
+                    break;
+                default:
+                    System.out.println ("Enter a valide number !!" );
+            }
+
+        }while (choix != 99);
+    }
+    public void deleteStudent(){
+        System.out.println (Application.getStudents () );
+        System.out.println ("Enter Student Number: " );
+        int studentNumber = Integer.parseInt ( Application.scan () );
+
+        Application.getStudents().remove ( studentNumber );
+        System.out.println ("Success " );
+    }
+
+
 
     // Teacher Methods ----------------------------------------------------------------------
     public void assigneMatiereToTeacher(int teacherNumber, int matiereNumber){
@@ -478,4 +572,40 @@ public class AdminServices {
         Application.getMatieres ().remove ( matiereNumber );
     }
 
+
+
+    // Evaluation Methods -------------------------------------------------------------------
+    public void addEvaluation(){
+        Evaluation evaluation = new Evaluation (  );
+
+        System.out.println (Application.getStudents ().toString () );
+        System.out.println ( "Enter Student Number: ");
+        int studentNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.getMatieres ().toString () );
+        System.out.println ("Enter Matiere Number: " );
+        evaluation.setId_matiere ( Integer.parseInt ( Application.scan () ) );
+
+        System.out.println ("Enter note: " );
+        evaluation.setNote ( Double.parseDouble ( Application.scan () ) );
+
+        System.out.println ("Enter Date : JJ/MM/AAAA" );
+        evaluation.setDate ( Application.scan () );
+
+        Application.getStudent ( studentNumber ).setEvaluation ( evaluation );
+    }
+
+    public void getAllEvaluation(){
+        System.out.println (Application.getStudents () );
+        System.out.println ("Enter Student Number: " );
+        int studentNumber = Integer.parseInt ( Application.scan () );
+
+        Application.getStudent ( studentNumber ).getEvaluations ().forEach ( (key, value) -> {
+            Application.getMatieres ().forEach ( (matiereKey, matiere) -> {
+                if (value.getId_matiere () == matiere.getId ()){
+                    System.out.println ("Matiere : " + matiere.getName () + " \t\t\t\tnote : " + value.getNote () + " \t\t\t\tDate : " + value.getDate () );
+                }
+            } );
+        } );
+    }
 }

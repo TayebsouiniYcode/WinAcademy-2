@@ -3,6 +3,19 @@ import java.util.Scanner;
 
 public class Application {
     private static HashMap<Integer, Matiere> matieres = new HashMap <> (  );
+    private static HashMap<Integer, Student> students = new HashMap <> (  );
+
+    public static void setStudent(Student student){
+        Application.students.put ( student.getId (), student );
+    }
+
+    public static Student getStudent(int id){
+        return Application.students.get ( id );
+    }
+
+    public static HashMap<Integer, Student> getStudents(){
+        return Application.students;
+    }
 
     public static void setMatiere(Matiere matiere){
         Application.matieres.put ( matiere.getId(), matiere );
