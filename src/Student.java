@@ -28,4 +28,19 @@ public class Student extends User{
         this.id = id;
         this.date_entree = date_entree;
     }
+
+    @Override
+    public String toString ( ) {
+        return "Student{" +
+                "date_entree='" + date_entree + '\'' +
+                ", evaluations=" + evaluations +
+                ", id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

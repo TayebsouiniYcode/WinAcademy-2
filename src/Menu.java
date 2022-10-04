@@ -4,7 +4,7 @@ public class Menu {
     public static void menuPrincipal(){
         AdminServices adminServices = new AdminServices();
         Menu menu = new Menu ();
-        int choix = 0;
+        int choix;
 
         do {
             Application.show("\t\t\tWelcome");
@@ -59,13 +59,13 @@ public class Menu {
     public static void teacher(){
         AdminServices adminServices = new AdminServices ();
         Menu menu = new Menu ();
-        int choix = 0;
+        int choix;
 
         do{
             System.out.println ("\t\t\t\t Teacher Management !! By " + "Username");
             System.out.println ("\t\t\t\t 1. Create Teacher" );
             System.out.println ("\t\t\t\t 2. Show Teachers" );
-            System.out.println ("\t\t\t\t 3. Search Teaches" );
+            //System.out.println ("\t\t\t\t 3. Search Teaches" );
             System.out.println ("\t\t\t\t 4. Update Teacher" );
             System.out.println ("\t\t\t\t 5. Delete Teacher" );
             System.out.println ("\t\t\t\t 6. Assigne Matiere to Teacher" );
@@ -82,6 +82,10 @@ public class Menu {
                 case 3:
                     //menu.subMenuSearchTeacher();
                     break;
+                case 4:
+                    adminServices.updateTeacher();
+                case 5:
+                    adminServices.deleteTeacher();
                 case 6:
                     menu.subMenuAddMatiereToTeacher();
                     break;
@@ -140,6 +144,33 @@ public class Menu {
 
         AdminServices adminServices = new AdminServices ();
         adminServices.assigneMatiereToTeacher(teacherNumber, matiereNumber);
+    }
+
+    public static int subMenuUpdateTeacher() {
+        int choix;
+
+        do {
+            System.out.println ("1. firstname" );
+            System.out.println ("2. lastname" );
+            System.out.println ("3. email" );
+            System.out.println ("4. phone" );
+            System.out.println ("5. password" );
+            System.out.println ("99. cancel " );
+            System.out.println ("Enter number: " );
+            choix = Integer.parseInt ( Application.scan () );
+
+            switch (choix){
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    return choix;
+            }
+
+        } while (choix != 99);
+
+        return choix;
     }
 
     public static void subMenuManageMatieres(){
