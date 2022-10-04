@@ -78,36 +78,86 @@ public class Application {
     public static void fakeData()
     {
         //fake data
-        Application.schools.put(1, new School(1, "Youcode Youssoufia", "youcode.ma"));
-        Application.schools.put(2, new School(2, "Youcode Safi", "youcode.ma"));
-        Application.schools.put(3, new School(3, "Youcode Marrakech", "youcode.ma"));
-        Application.schools.put(4, new School(4, "Youcode Meknes", "youcode.ma"));
+        Application.schools.put(1, new School(1, "Youcode", "youcode.ma"));
+        Application.schools.get ( 1 ).setAddress ( new Address ( 1, "Youssoufia", "Morocco", "46300", "Rue Mohammed V" ) );
+        Application.schools.put(2, new School(2, "1337", "1337.ma"));
+        Application.schools.get ( 1 ).setAddress ( new Address ( 2, "Kheribga", "Morocco", "4000", "Rue Tit Melil" ) );
 
         // departement
-        Application.schools.get ( 1 ).setDepartement ( 1, new Departement ( 1, "Informatique", "Departement d'informatique" ) );
-        Application.schools.get ( 1 ).setDepartement ( 2, new Departement ( 2, "Math", "Departement de math" ) );
-        Application.schools.get ( 1 ).setDepartement ( 3, new Departement ( 3, "Arabe", "Departement d'arabe" ) );
-        Application.schools.get ( 2 ).setDepartement ( 1, new Departement ( 4, "Informatique", "Departement d'informatique" ) );
-        Application.schools.get ( 2 ).setDepartement ( 2, new Departement ( 5, "Math", "Departement Math" ) );
+        Application.schools.get ( 1 ).setDepartement ( 1, new Departement ( 1, "Youssoufia", "Departement de L'Youssoufia" ) );
+        Application.schools.get ( 1 ).setDepartement ( 2, new Departement ( 2, "Safi", "Departement de Safi" ) );
+
+        Application.schools.get ( 2 ).setDepartement ( 1, new Departement ( 1, "Kheribga", "Departement de kheribga" ) );
+        Application.schools.get ( 2 ).setDepartement ( 2, new Departement ( 2, "Benguerir", "Departement de benguerir" ) );
 
         // teacher
-        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "22/12/2020", 1,  "Tayeb", "SOUINI", "tayeb@gmail.com", "123", "0607189671", true) );
-        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "22/12/2020", 2,  "Mourad", "esserakh", "mourad@gmail.com", "123", "0607189671", true) );
-        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "22/12/2022", 3,  "Fouad", "Rawan", "fouad@gmail.com", "123", "0607189671", true) );
-        Application.schools.get ( 1 ).getDepartement ( 2 ).setTeacher ( new Teacher ( "22/12/2023", 4,  "Ahmed", "Edir", "Ahmed@gmail.com", "123", "0607189671", true) );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "01/09/2018", 1,  "Youssef", "ouadid", "youssef@gmail.com", "123", "0609909993", true) );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "01/09/2018", 2,  "Ahmed", "Rafya", "ahmed@gmail.com", "123", "4325342543", true) );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "01/09/2018", 3,  "Bouchra", "Merzak", "bouchra@gmail.com", "123", "0743214321", true) );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).setTeacher ( new Teacher ( "01/09/2018", 4,  "Abdelhafid", "Edir", "abdelhafid@gmail.com", "123", "07423432423", true) );
 
-        /*
-        Application.users.put ( 1, new User ( 1, "Tayeb",
-                "Souini", "tayeb@gmail.com",
-                "123", "0607189671", true ) );
-        Application.users.put ( 2, new User ( 1, "mourad",
-                "esserakh", "mourad@gmail.com",
-                "123", "0607189671", true ) );
-        Application.users.put ( 3, new User ( 1, "fouad",
-                "raouan", "fouad@gmail.com",
-                "123", "0607189671", true ) );
+        Application.schools.get ( 1 ).getDepartement ( 2 ).setTeacher ( new Teacher ( "01/09/2019", 1,  "Yassine", "Bahil", "yassine@gmail.com", "123", "0942343", true) );
+        Application.schools.get ( 1 ).getDepartement ( 2 ).setTeacher ( new Teacher ( "01/09/20189", 2,  "Ilyas", "Raouf", "ilyas@gmail.com", "123", "06734843843", true) );
 
-         */
+
+
+
+        Application.setStudent (
+                new Student ( 1, "01/09/2020", 1,
+                        "Tayeb", "SOUINI", "tayeb@gmail.com",
+                        "123", "0607189671", true ) );
+        Application.setStudent (
+                new Student ( 2, "01/09/2020", 2,
+                        "abdelaziz", "afrakla", "abdelaziz@gmail.com",
+                        "123", "0607189671", true ) );
+        Application.setStudent (
+                new Student ( 3, "01/09/2020", 3,
+                        "aymen", "darji", "aymen@gmail.com",
+                        "123", "0607189671", true ) );
+        Application.setStudent (
+                new Student ( 4, "01/09/2020", 4,
+                        "abdeslam", "el boukri", "abdesalam@gmail.com",
+                        "123", "0607189671", true ) );
+
+        Application.setMatiere (
+                new Matiere ( 1, "Informatique", "description matiere informatique" )
+        );
+        Application.setMatiere (
+                new Matiere ( 2, "Math", "description matiere Math" )
+        );
+        Application.setMatiere (
+                new Matiere ( 3, "Java", "description matiere Java" )
+        );
+
+        Application.schools.get ( 1 ).getDepartement ( 1 ).getTecher ( 1 ).setId_matiere ( 1 );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).getTecher ( 2 ).setId_matiere ( 1 );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).getTecher ( 3 ).setId_matiere ( 2 );
+        Application.schools.get ( 1 ).getDepartement ( 1 ).getTecher ( 4 ).setId_matiere ( 3 );
+
+
+        Application.getStudent ( 1 ).setEvaluation (
+                new Evaluation ( 1, "22/12/2022" , 17.20 )
+        );
+        Application.getStudent ( 1 ).setEvaluation (
+                new Evaluation ( 1, "21/01/2023" , 13.00 )
+        );
+        Application.getStudent ( 1 ).setEvaluation (
+                new Evaluation ( 2, "22/12/2022" , 20.00 )
+        );
+        Application.getStudent ( 1 ).setEvaluation (
+                new Evaluation ( 3, "22/12/2022" , 10.00 )
+        );
+
+        Application.getStudent ( 2 ).setEvaluation (
+                new Evaluation ( 1, "22/12/2022" , 15.00 )
+        );
+        Application.getStudent ( 2 ).setEvaluation (
+                new Evaluation ( 1, "22/12/2022" , 10.56 )
+        );
+        Application.getStudent ( 2 ).setEvaluation (
+                new Evaluation ( 2, "22/12/2022" , 20.00 )
+        );
+
     }
 
     // School Methods -------------------------------------------------------------------------------------
