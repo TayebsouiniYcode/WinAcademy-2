@@ -2,7 +2,7 @@ public class AdminServices {
     Application app = new Application();
 
     public void manageSchool() {
-        int choix = 0;
+        int choix;
         do {
             System.out.println("1. Create school");
             System.out.println("2. Update school");
@@ -376,6 +376,34 @@ public class AdminServices {
         Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).setTeacher ( teacher );
     }
 
+    public void showAllTeachers(){
+        System.out.println (Application.schools.toString () );
+        System.out.println ("Enter School number: " );
+        int schoolNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartements ().toString () );
+        System.out.println ("Enter Departement number: " );
+        int departementNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).getTeachers ().toString () );
+    }
+
+    public void  deleteTeacher(){
+        System.out.println (Application.schools.toString () );
+        System.out.println ("Enter school number: " );
+        int schoolNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartements ().toString () );
+        int departementNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).getTeachers () );
+        System.out.println ("Enter Teacher number: " );
+        int teacherNumber = Integer.parseInt ( Application.scan () );
+
+        Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).getTeachers ().remove ( teacherNumber );
+        System.out.println ("Success !!" );
+    }
+
     public void manageTeacher(){
         Menu.teacher();
     }
@@ -418,7 +446,7 @@ public class AdminServices {
     }
 
     public void getAllStudent(){
-        System.out.println (Application.getStudents() );
+        System.out.println (Application.getStudents().toString () );
     }
 
     public void updateStudent(){
@@ -437,8 +465,12 @@ public class AdminServices {
             System.out.println ("99. Cancel" );
             choix = Integer.parseInt ( Application.scan () );
 
-            System.out.println ("Enter value: " );
-            String value = Application.scan ();
+            String value = "";
+            if (choix != 99 ) {
+                System.out.println ("Enter value: " );
+                value = Application.scan ();
+            }
+
             switch (choix){
                 case 1:
                     //updateStudentFirstname(studentNumber, "setFirstname");
@@ -496,6 +528,66 @@ public class AdminServices {
                 }
             } );
         } );
+    }
+    public void updateTeacher(){
+        System.out.println (Application.schools.toString () );
+        System.out.println ("Enter school number: " );
+        int schoolNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartements ().toString () );
+        System.out.println ("Enter Departement number: " );
+        int departementNumber = Integer.parseInt ( Application.scan () );
+
+        System.out.println (Application.schools.get ( schoolNumber ).getDepartement ( departementNumber ).getTeachers ().toString () );
+        System.out.println ("Enter Teacher number: " );
+        int teacherNumber = Integer.parseInt ( Application.scan () );
+
+        int choix = Menu.subMenuUpdateTeacher();
+        String value;
+        if (choix != 99 && choix != -1){
+            switch (choix){
+                case 1:
+                    System.out.println ("Enter firstname: " );
+                    value = Application.scan ();
+                    Application.schools.get ( schoolNumber ).
+                            getDepartement ( departementNumber ).
+                            getTecher ( teacherNumber ).
+                            setFirstname ( value );
+                    break;
+                case 2:
+                    System.out.println ("Enter lastname: " );
+                    value = Application.scan ();
+                    Application.schools.get ( schoolNumber ).
+                            getDepartement ( departementNumber ).
+                            getTecher ( teacherNumber ).
+                            setLastname ( value );
+                    break;
+                case 3:
+                    System.out.println ("Enter email: " );
+                    value = Application.scan ();
+                    Application.schools.get ( schoolNumber ).
+                            getDepartement ( departementNumber ).
+                            getTecher ( teacherNumber ).
+                            setEmail ( value );
+                    break;
+                case 4:
+                    System.out.println ("Enter phone: " );
+                    value = Application.scan ();
+                    Application.schools.get ( schoolNumber ).
+                            getDepartement ( departementNumber ).
+                            getTecher ( teacherNumber ).
+                            setPhone ( value );
+                    break;
+                case 5:
+                    System.out.println ("Enter password: " );
+                    value = Application.scan ();
+                    Application.schools.get ( schoolNumber ).
+                            getDepartement ( departementNumber ).
+                            getTecher ( teacherNumber ).
+                            setPassword ( value );
+                    break;
+            }
+        }
     }
 
     // Matiere Methods ---------------------------------------------------------------------------

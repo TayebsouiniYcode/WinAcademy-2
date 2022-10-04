@@ -14,7 +14,8 @@ public class Application {
     }
 
     public static HashMap<Integer, Student> getStudents(){
-        return Application.students;
+        Application app = new Application ();
+        return app.students;
     }
 
     public static void setMatiere(Matiere matiere){

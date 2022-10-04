@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1f67a2b7-b9a8-4328-b839-08b38c1f7296" name="Changes" comment="inittial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/class diagram.mdj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Evaluation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
     </list>
@@ -76,7 +76,8 @@
       <workItem from="1664557489879" duration="58000" />
       <workItem from="1664616383575" duration="6628000" />
       <workItem from="1664624311825" duration="1370000" />
-      <workItem from="1664704660260" duration="32855000" />
+      <workItem from="1664704660260" duration="35777000" />
+      <workItem from="1664870852527" duration="2739000" />
     </task>
     <task id="LOCAL-00001" summary="inittial commit">
       <created>1664361474885</created>
